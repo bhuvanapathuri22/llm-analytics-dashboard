@@ -1,9 +1,9 @@
+
 # 🚀 AI Manufacturing Analytics Dashboard
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
-![LLM](https://img.shields.io/badge/AI-Gemini%20LLM-green)
-![Status](https://img.shields.io/badge/Project-Active-brightgreen)
+![AI](https://img.shields.io/badge/AI-LLM-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 An **AI-powered analytics dashboard** that allows users to query manufacturing or business data using **natural language**.
@@ -18,11 +18,11 @@ This project demonstrates how **LLM + Data Analytics** can simplify business int
 
 Run locally:
 
-```bash
+```
 streamlit run app.py
 ```
 
-Or view the deployed application:
+Or open the deployed application:
 
 ```
 https://your-streamlit-app-link.streamlit.app
@@ -30,11 +30,17 @@ https://your-streamlit-app-link.streamlit.app
 
 ---
 
+# 🏗 System Architecture
+
+![Architecture](architecture.png)
+
+---
+
 # 📸 Application Screenshots
 
 ## Dashboard
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](dashboard.png)
 
 ---
 
@@ -46,7 +52,7 @@ Example query:
 top 5 products by revenue
 ```
 
-![Query](assets/query.png)
+![Query](query.png)
 
 ---
 
@@ -54,7 +60,7 @@ top 5 products by revenue
 
 Top 5 products by revenue visualization.
 
-![Chart](assets/chart.png)
+![Chart](chart.png)
 
 ---
 
@@ -62,7 +68,7 @@ Top 5 products by revenue visualization.
 
 The system converts natural language queries into structured parameters.
 
-![Parsed Query](assets/parsed_query.png)
+![Parsed Query](parsed_query.png)
 
 ---
 
@@ -83,59 +89,30 @@ The system converts natural language queries into structured parameters.
 
 ```
 User Question
-   ↓
+      ↓
 LLM Query Parsing
-   ↓
+      ↓
 Structured Query
-   ↓
+      ↓
 Pandas Data Processing
-   ↓
+      ↓
 Plotly Visualization
-   ↓
+      ↓
 Dashboard Output
-```
-
----
-
-# 🏗 System Architecture
-
-```
-           USER QUESTION
-                 │
-                 ▼
-        Streamlit Dashboard UI
-                 │
-                 ▼
-        Query Understanding Engine
-        (LLM + Rule-Based Parsing)
-                 │
-                 ▼
-            Data Processing
-              (Pandas)
-                 │
-                 ▼
-        Aggregation & Metrics
-                 │
-                 ▼
-         Visualization Engine
-            (Plotly)
-                 │
-                 ▼
-            Dashboard Output
 ```
 
 ---
 
 # 🛠 Technology Stack
 
-| Technology        | Purpose                              |
-| ----------------- | ------------------------------------ |
-| Python            | Core programming language            |
-| Streamlit         | Interactive dashboard UI             |
-| Pandas            | Data manipulation                    |
-| Plotly            | Interactive visualization            |
-| Google Gemini API | Natural language query understanding |
-| SQLite            | Data storage                         |
+| Technology        | Purpose                   |
+| ----------------- | ------------------------- |
+| Python            | Core programming language |
+| Streamlit         | Dashboard interface       |
+| Pandas            | Data processing           |
+| Plotly            | Visualization             |
+| Google Gemini API | LLM query understanding   |
+| SQLite            | Database storage          |
 
 ---
 
@@ -148,12 +125,11 @@ llm-analytics-dashboard
 ├── manufacturing.db
 ├── requirements.txt
 ├── README.md
-│
-└── assets
-    ├── dashboard.png
-    ├── query.png
-    ├── chart.png
-    └── parsed_query.png
+├── dashboard.png
+├── query.png
+├── chart.png
+├── parsed_query.png
+└── architecture.png
 ```
 
 ---
@@ -162,25 +138,25 @@ llm-analytics-dashboard
 
 ### 1️⃣ Clone the repository
 
-```bash
+```
 git clone https://github.com/your-username/llm-analytics-dashboard.git
 ```
 
 ### 2️⃣ Navigate to the project folder
 
-```bash
+```
 cd llm-analytics-dashboard
 ```
 
 ### 3️⃣ Install dependencies
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
 ### 4️⃣ Run the application
 
-```bash
+```
 streamlit run app.py
 ```
 
@@ -190,7 +166,7 @@ streamlit run app.py
 
 This project uses **Google Gemini API**.
 
-Add your API key using **Streamlit Secrets**.
+Add your API key using **Streamlit secrets**.
 
 Example:
 
@@ -200,7 +176,7 @@ GEMINI_API_KEY="your_api_key_here"
 
 In `app.py`:
 
-```python
+```
 import streamlit as st
 import google.generativeai as genai
 
@@ -223,27 +199,14 @@ The system automatically **interprets the query and generates analytics insights
 
 ---
 
-# 🚀 Roadmap
-
-Future improvements planned:
+# 🚀 Future Improvements
 
 • SAP HANA integration
 • Azure cloud deployment
 • Real-time analytics pipeline
 • Multi-database support
 • Advanced LLM reasoning
-• User authentication and roles
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Submit a pull request
+• User authentication
 
 ---
 
