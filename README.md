@@ -74,14 +74,14 @@ The system converts natural language queries into structured parameters.
 
 # ✨ Key Features
 
-• Natural language analytics queries
-• LLM-powered query understanding
-• Automatic metric detection
-• Data aggregation using Pandas
-• Interactive visualizations using Plotly
-• Streamlit dashboard interface
-• SQLite database integration
-• Parsed query JSON display
+- Natural language analytics queries
+- LLM-powered query understanding
+- Automatic metric detection
+- Data aggregation using Pandas
+- Interactive visualizations using Plotly
+- Streamlit dashboard interface
+- SQLite database integration
+- Parsed query JSON display
 
 ---
 
