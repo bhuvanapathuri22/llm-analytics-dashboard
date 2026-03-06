@@ -84,7 +84,9 @@ Convert this analytics question into JSON.
 
 Question: "{question}"
 
-Return ONLY JSON:
+Return ONLY JSON. No explanation.
+
+JSON format:
 
 {{
 "metric": "revenue/spend/profit",
@@ -98,17 +100,25 @@ Return ONLY JSON:
 
     response = model.generate_content(prompt)
 
-    text = response.text
+    text = response.text.strip()
 
-    json_match = re.search(r"\{.*\}", text, re.DOTALL)
+    try:
+        # Try direct JSON
+        parsed = json.loads(text)
 
-    parsed = json.loads(json_match.group())
+    except:
+        # Extract JSON block if model added text
+        json_match = re.search(r"\{[\s\S]*\}", text)
 
-    if parsed["dimension"] == "null":
+        if json_match:
+            parsed = json.loads(json_match.group())
+        else:
+            raise ValueError("LLM did not return JSON")
+
+    if parsed.get("dimension") == "null":
         parsed["dimension"] = None
 
     return parsed
-
 
 
 
@@ -209,8 +219,6 @@ def run_query(parsed):
 
 
 
-question = st.text_input("Ask a business question and press Enter")
-
 # -----------------------------
 # USER QUERY UI
 # -----------------------------
@@ -218,7 +226,8 @@ question = st.text_input("Ask a business question and press Enter")
 st.subheader("Ask a Business Question")
 
 question = st.text_input(
-    "Type your question and press ENTER (example: last 3 months revenue)"
+    "Ask your question (Press ENTER to analyze)",
+    key="query_box"
 )
 
 if question:
@@ -226,16 +235,18 @@ if question:
     try:
         parsed = parse_query(question)
 
+        # Validate query
         if parsed["metric"] not in ["revenue", "spend", "profit"]:
-
             st.warning("Please ask a business analytics question about revenue, spend, or profit.")
 
         else:
 
             fig, total, metric = run_query(parsed)
 
+            # Chart
             st.plotly_chart(fig, use_container_width=True)
 
+            # Total value
             st.metric(f"Total {metric}", f"{total:,.2f}")
 
             # Optional debug button
@@ -244,5 +255,5 @@ if question:
 
     except Exception as e:
 
-        st.error("Sorry, I couldn't understand the query. Please try again.")
-
+        st.error("Could not understand the query.")
+        st.write("Debug info:", e)
