@@ -189,11 +189,11 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 Users can ask questions like:
 
-• top 5 products by revenue
-• bottom 3 customers by sales
-• revenue by region
-• monthly sales trend
-• total revenue for last 3 months
+- top 5 products by revenue
+- bottom 3 customers by sales
+- revenue by region
+- monthly sales trend
+- total revenue for last 3 months
 
 The system automatically **interprets the query and generates analytics insights**.
 
@@ -201,12 +201,12 @@ The system automatically **interprets the query and generates analytics insights
 
 # 🚀 Future Improvements
 
-• SAP HANA integration
-• Azure cloud deployment
-• Real-time analytics pipeline
-• Multi-database support
-• Advanced LLM reasoning
-• User authentication
+- SAP HANA integration
+- Azure cloud deployment
+- Real-time analytics pipeline
+- Multi-database support
+- Advanced LLM reasoning
+- User authentication
 
 ---
 
