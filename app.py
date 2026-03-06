@@ -10,7 +10,9 @@ import re
 st.set_page_config(page_title="AI Manufacturing Analytics", layout="wide")
 st.title("🏭 AI Manufacturing Analytics")
 
-genai.configure(api_key="AIzaSyC3DZB_7CcEow0Q5CUfjvatVMjRmMRvtBM")
+
+
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 
@@ -215,4 +217,5 @@ if question:
 
     # optional debug button
     if st.button("Show Parsed Query"):
+
         st.write(parsed)
