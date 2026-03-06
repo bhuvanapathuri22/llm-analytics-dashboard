@@ -130,6 +130,12 @@ def apply_filters(df, parsed):
     return df
 
 
+def is_valid_query(parsed):
+
+    if parsed["metric"] not in ["revenue", "spend", "profit"]:
+        return False
+
+    return True
 
 
 def run_query(parsed):
@@ -205,17 +211,38 @@ def run_query(parsed):
 
 question = st.text_input("Ask a business question and press Enter")
 
+# -----------------------------
+# USER QUERY UI
+# -----------------------------
+
+st.subheader("Ask a Business Question")
+
+question = st.text_input(
+    "Type your question and press ENTER (example: last 3 months revenue)"
+)
+
 if question:
 
-    parsed = parse_query(question)
+    try:
+        parsed = parse_query(question)
 
-    fig, total, metric = run_query(parsed)
+        if parsed["metric"] not in ["revenue", "spend", "profit"]:
 
-    st.plotly_chart(fig, use_container_width=True)
+            st.warning("Please ask a business analytics question about revenue, spend, or profit.")
 
-    st.metric(f"Total {metric}", f"{total:,.2f}")
+        else:
 
-    # optional debug button
-    if st.button("Show Parsed Query"):
+            fig, total, metric = run_query(parsed)
 
-        st.write(parsed)
+            st.plotly_chart(fig, use_container_width=True)
+
+            st.metric(f"Total {metric}", f"{total:,.2f}")
+
+            # Optional debug button
+            if st.button("Show Parsed Query"):
+                st.json(parsed)
+
+    except Exception as e:
+
+        st.error("Sorry, I couldn't understand the query. Please try again.")
+
