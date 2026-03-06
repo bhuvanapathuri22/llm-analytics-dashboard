@@ -64,25 +64,32 @@ llm-analytics-dashboard
 Clone the repository
 
 
-## git clone https://github.com/your-username/llm-analytics-dashboard.git
+'''
+git clone https://github.com/your-username/llm-analytics-dashboard.git
+'''
 
 
 Navigate to project folder
 
 
-## cd llm-analytics-dashboard
-
+'''
+cd llm-analytics-dashboard
+'''
 
 Install dependencies
 
 
-## pip install -r requirements.txt
+''' 
+pip install -r requirements.txt
 
+'''
 
 Run the application
 
 
-## streamlit run app.py
+'''
+streamlit run app.py
+'''
 
 
 ---
