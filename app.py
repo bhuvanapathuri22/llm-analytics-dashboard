@@ -98,7 +98,7 @@ JSON format:
 }}
 """
 
-    response = model.generate_content(prompt)
+    response = model.generate_content(prompt,generation_config={"temperature":0})
 
     text = response.text.strip()
 
@@ -257,3 +257,4 @@ if question:
 
         st.error("Could not understand the query.")
         st.write("Debug info:", e)
+
